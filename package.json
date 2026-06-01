@@ -17,11 +17,9 @@
   "description": "League of Legends dodge calculator — compare team win rates and find champion guides.",
   "dependencies": {
     "axios": "^1.9.0",
-    "bcrypt": "^6.0.0",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
-    "mongodb": "^6.21.0",
     "nodemon": "^3.1.10"
   },
   "devDependencies": {
