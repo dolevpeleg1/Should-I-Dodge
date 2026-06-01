@@ -15,14 +15,12 @@
       <%- include('partials/championDataNotice') %>
 
       <form class="card card--centered" action="/generateVideo" method="post">
-        <div class="champion-select-single field">
-          <label for="targetChamp">Champion</label>
-          <select id="targetChamp" name="targetChamp" required>
-            <option value="" disabled selected>Select a champion</option>
-            <% champions.forEach(champion => { %>
-            <option value="<%= champion.name %>"><%= champion.name %></option>
-            <% }) %>
-          </select>
+        <div class="champion-select-single">
+          <%- include('partials/championAutocompleteField', {
+            id: 'targetChamp',
+            name: 'targetChamp',
+            label: 'Champion',
+          }) %>
         </div>
 
         <div class="form-actions">
@@ -36,5 +34,6 @@
     </main>
 
     <%- include('partials/footer') %>
+    <%- include('partials/championAutocompleteSetup') %>
   </body>
 </html>

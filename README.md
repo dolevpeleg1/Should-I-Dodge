@@ -21,7 +21,7 @@ A fan-made **League of Legends** web app that compares team compositions using a
 
 ## Features
 
-- **5v5 comp comparison** with autocomplete-style champion lists from bundled data
+- **5v5 comp comparison** with type-to-search champion autocomplete from bundled data
 - **Verdict** based on average win rates (not ML or live game data)
 - **Champion guides** via YouTube Data API v3 when `YOUTUBE_API_KEY` is set
 - **Data refresh scripts** to pull names from Riot Data Dragon and win rates from a public Hugging Face dataset (or manual CSV)

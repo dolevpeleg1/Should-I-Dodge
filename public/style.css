@@ -492,7 +492,8 @@ img {
   color: var(--text-muted);
 }
 
-select {
+select,
+.champion-autocomplete__input {
   width: 100%;
   min-height: var(--touch-min);
   padding: 0.5rem 0.65rem;
@@ -502,14 +503,55 @@ select {
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-sm);
-  cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
 }
 
-select:focus {
+select {
+  cursor: pointer;
+}
+
+.champion-autocomplete__input {
+  cursor: text;
+}
+
+select:focus,
+.champion-autocomplete__input:focus {
   outline: 2px solid var(--gold);
   outline-offset: 1px;
+}
+
+.champion-autocomplete {
+  position: relative;
+}
+
+.champion-autocomplete__list {
+  position: absolute;
+  z-index: 50;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 14rem;
+  margin: 0.25rem 0 0;
+  padding: 0.25rem 0;
+  overflow-y: auto;
+  list-style: none;
+  background: rgba(12, 16, 28, 0.98);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+
+.champion-autocomplete__option {
+  padding: 0.5rem 0.65rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.champion-autocomplete__option:hover,
+.champion-autocomplete__option.is-active {
+  background: rgba(200, 170, 110, 0.18);
+  color: var(--gold-bright);
 }
 
 .champion-select-single {
