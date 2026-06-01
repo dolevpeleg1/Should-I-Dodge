@@ -1,0 +1,11 @@
+<% if (typeof championMeta !== 'undefined' && championMeta) { %>
+<p class="champion-data-notice">
+  Champion names from Riot Data Dragon<% if (championMeta.ddragon_version) { %> (patch <%= championMeta.ddragon_version %>)<% } %>.
+  Win rates are fan-maintained and approximate.
+  <% if (championMeta.updated_at) {
+    const updated = new Date(championMeta.updated_at);
+    if (!isNaN(updated.getTime())) { %>
+  Last data refresh: <%= updated.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }) %>.
+  <% } } %>
+</p>
+<% } %>

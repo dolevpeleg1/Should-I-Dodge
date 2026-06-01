@@ -5,6 +5,11 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
+    "sync-champions": "node scripts/syncChampions.js",
+    "fetch-winrates": "node scripts/fetchWinRatesFromHuggingFace.js",
+    "update-champions": "node scripts/updateChampions.js",
+    "import-winrates": "node scripts/importWinRatesFromCsv.js",
+    "export-winrates": "node scripts/exportWinRatesToCsv.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dolev Peleg",
@@ -18,5 +23,8 @@
     "express": "^5.1.0",
     "mongodb": "^6.21.0",
     "nodemon": "^3.1.10"
+  },
+  "devDependencies": {
+    "duckdb": "^1.4.0"
   }
 }

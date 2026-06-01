@@ -1,11 +1,17 @@
 "use strict";
 const express = require("express");
 const router = express.Router();
-const fs = require("fs");
 const path = require("path");
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const bcrypt = require("bcrypt");
 const axios = require("axios");
+const {
+  getChampions,
+  getChampionMetadata,
+  findChampionByName,
+  startChampionCacheRefresh,
+  DEFAULT_REFRESH_MS,
+} = require("./lib/championData");
 
 const SALT_ROUNDS = 10;
 
@@ -26,10 +32,11 @@ if (!uri) {
   process.exit(1);
 }
 
-// storing data from json file
-const filePath = path.join(__dirname, "public", "championWinrates.json");
-const fileContent = fs.readFileSync(filePath, "utf8");
-const { champions } = JSON.parse(fileContent);
+const championMeta = () => getChampionMetadata();
+
+const refreshMs =
+  Number(process.env.CHAMPION_CACHE_REFRESH_MS) || DEFAULT_REFRESH_MS;
+startChampionCacheRefresh(refreshMs);
 
 // main page
 router.get("/", (request, response) => {
@@ -110,7 +117,10 @@ router.post("/dodgeCalculator", (request, response) => {
       }
 
       if (validPassword) {
-        response.render("dodgeCalculator", { champions });
+        response.render("dodgeCalculator", {
+          champions: getChampions(),
+          championMeta: championMeta(),
+        });
       } else {
         response.render("userNotFound");
       }
@@ -123,7 +133,10 @@ router.post("/dodgeCalculator", (request, response) => {
 });
 
 router.get("/dodgeCalculator", (request, response) => {
-  response.render("dodgeCalculator", { champions });
+  response.render("dodgeCalculator", {
+    champions: getChampions(),
+    championMeta: championMeta(),
+  });
 });
 
 // Getting team compositions from the user
@@ -150,10 +163,7 @@ router.post("/results", (request, response) => {
   let allyWinrateSum = 0;
 
   for (let ally of allyTeam) {
-    // get the winrate from the json object
-    const champion = champions.find(
-      (champion) => champion.name.toLowerCase() === ally.toLowerCase()
-    );
+    const champion = findChampionByName(ally);
     if (champion) {
       allyWinrateSum += champion.win_rate;
     }
@@ -163,10 +173,7 @@ router.post("/results", (request, response) => {
   let eWinrateSum = 0;
 
   for (let enemy of enemyTeam) {
-    // get the winrate from the json object
-    const champion = champions.find(
-      (champion) => champion.name.toLowerCase() === enemy.toLowerCase()
-    );
+    const champion = findChampionByName(enemy);
     if (champion) {
       eWinrateSum += champion.win_rate;
     }
@@ -193,7 +200,10 @@ router.post("/results", (request, response) => {
 
 // champion page
 router.get("/championPage", (request, response) => {
-  response.render("championPage", { champions });
+  response.render("championPage", {
+    champions: getChampions(),
+    championMeta: championMeta(),
+  });
 });
 
 // generate a video using Youtube API

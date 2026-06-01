@@ -1,174 +1,695 @@
 {
+  "updated_at": "2026-06-01T12:51:02.159Z",
+  "ddragon_version": "16.11.1",
+  "win_rate_source": "Hugging Face HakimT/lol-champion-ranked-stats (latest non-zero snapshot per champion, mostly patch 15.23; platinum+ avg across roles)",
   "champions": [
-    { "name": "Jhin", "win_rate": 50.54 },
-    { "name": "Caitlyn", "win_rate": 49.46 },
-    { "name": "Miss Fortune", "win_rate": 51.12 },
-    { "name": "Lux", "win_rate": 50.15 },
-    { "name": "Jinx", "win_rate": 51.39 },
-    { "name": "Ezreal", "win_rate": 47.31 },
-    { "name": "Kai'Sa", "win_rate": 48.62 },
-    { "name": "Yasuo", "win_rate": 49.87 },
-    { "name": "Yone", "win_rate": 47.94 },
-    { "name": "Ashe", "win_rate": 49.09 },
-    { "name": "Mel", "win_rate": 48.57 },
-    { "name": "Lucian", "win_rate": 50.09 },
-    { "name": "Zed", "win_rate": 48.61 },
-    { "name": "Sylas", "win_rate": 49.12 },
-    { "name": "Kayn", "win_rate": 50.75 },
-    { "name": "Ahri", "win_rate": 50.18 },
-    { "name": "Viego", "win_rate": 49.64 },
-    { "name": "Lee Sin", "win_rate": 47.68 },
-    { "name": "Tristana", "win_rate": 49.69 },
-    { "name": "Pantheon", "win_rate": 49.69 },
-    { "name": "Sett", "win_rate": 52.63 },
-    { "name": "Darius", "win_rate": 48.88 },
-    { "name": "Thresh", "win_rate": 50.19 },
-    { "name": "Warwick", "win_rate": 52.49 },
-    { "name": "Lulu", "win_rate": 50.79 },
-    { "name": "Shaco", "win_rate": 49.29 },
-    { "name": "Varus", "win_rate": 48.25 },
-    { "name": "Volibear", "win_rate": 51.00 },
-    { "name": "Mordekaiser", "win_rate": 51.22 },
-    { "name": "Nautilus", "win_rate": 50.02 },
-    { "name": "Teemo", "win_rate": 51.79 },
-    { "name": "Yorick", "win_rate": 53.12 },
-    { "name": "Morgana", "win_rate": 51.14 },
-    { "name": "Diana", "win_rate": 50.75 },
-    { "name": "Naafiri", "win_rate": 51.37 },
-    { "name": "Nami", "win_rate": 52.07 },
-    { "name": "Nocturne", "win_rate": 51.92 },
-    { "name": "Malphite", "win_rate": 50.43 },
-    { "name": "Master Yi", "win_rate": 50.07 },
-    { "name": "Akali", "win_rate": 49.36 },
-    { "name": "Vayne", "win_rate": 50.96 },
-    { "name": "Xerath", "win_rate": 51.14 },
-    { "name": "Malzahar", "win_rate": 51.99 },
-    { "name": "Garen", "win_rate": 50.09 },
-    { "name": "Aatrox", "win_rate": 49.38 },
-    { "name": "Xin Zhao", "win_rate": 51.25 },
-    { "name": "Vi", "win_rate": 49.65 },
-    { "name": "Viktor", "win_rate": 50.35 },
-    { "name": "Ekko", "win_rate": 50.16 },
-    { "name": "Veigar", "win_rate": 51.53 },
-    { "name": "Irelia", "win_rate": 49.65 },
-    { "name": "Leona", "win_rate": 50.51 },
-    { "name": "Shen", "win_rate": 50.79 },
-    { "name": "Jax", "win_rate": 48.87 },
-    { "name": "Smolder", "win_rate": 49.38 },
-    { "name": "Renekton", "win_rate": 50.5 },
-    { "name": "Karma", "win_rate": 49.31 },
-    { "name": "Gwen", "win_rate": 48.19 },
-    { "name": "Swain", "win_rate": 50.94 },
-    { "name": "Brand", "win_rate": 50.55 },
-    { "name": "Pyke", "win_rate": 48.39 },
-    { "name": "Yuumi", "win_rate": 48.72 },
-    { "name": "Zyra", "win_rate": 51.25 },
-    { "name": "Sion", "win_rate": 50.63 },
-    { "name": "Blitzcrank", "win_rate": 49.06 },
-    { "name": "Lillia", "win_rate": 51.08 },
-    { "name": "Seraphine", "win_rate": 51.65 },
-    { "name": "LeBlanc", "win_rate": 48.45 },
-    { "name": "Nasus", "win_rate": 51.14 },
-    { "name": "Vladimir", "win_rate": 50.03 },
-    { "name": "Galio", "win_rate": 50.73 },
-    { "name": "Graves", "win_rate": 49.72 },
-    { "name": "Amumu", "win_rate": 51.65 },
-    { "name": "Talon", "win_rate": 49.39 },
-    { "name": "Senna", "win_rate": 48.88 },
-    { "name": "Katarina", "win_rate": 49.18 },
-    { "name": "Kha'Zix", "win_rate": 49.39 },
-    { "name": "Braum", "win_rate": 51.61 },
-    { "name": "Cho'Gath", "win_rate": 50.62 },
-    { "name": "Dr. Mundo", "win_rate": 51.7 },
-    { "name": "Hwei", "win_rate": 50.32 },
-    { "name": "Fiddlesticks", "win_rate": 51.21 },
-    { "name": "Jayce", "win_rate": 47.78 },
-    { "name": "Vel'Koz", "win_rate": 51.41 },
-    { "name": "Xayah", "win_rate": 50.02 },
-    { "name": "Jarvan IV", "win_rate": 51.23 },
-    { "name": "Samira", "win_rate": 49.77 },
-    { "name": "Twitch", "win_rate": 49.77 },
-    { "name": "Twisted Fate", "win_rate": 47.87 },
-    { "name": "Gragas", "win_rate": 47.39 },
-    { "name": "Trundle", "win_rate": 51.06 },
-    { "name": "Kayle", "win_rate": 51.88 },
-    { "name": "Milio", "win_rate": 52.22 },
-    { "name": "Orianna", "win_rate": 49.43 },
-    { "name": "Soraka", "win_rate": 51.32 },
-    { "name": "Tahm Kench", "win_rate": 49.65 },
-    { "name": "Briar", "win_rate": 52.34 },
-    { "name": "Aphelios", "win_rate": 49.48 },
-    { "name": "Poppy", "win_rate": 50.54 },
-    { "name": "Alistar", "win_rate": 49.51 },
-    { "name": "Fizz", "win_rate": 50.08 },
-    { "name": "Wukong", "win_rate": 51.02 },
-    { "name": "Neeko", "win_rate": 48.88 },
-    { "name": "Syndra", "win_rate": 49.65 },
-    { "name": "Riven", "win_rate": 49.41 },
-    { "name": "Zoe", "win_rate": 49.08 },
-    { "name": "Vex", "win_rate": 50.62 },
-    { "name": "Tryndamere", "win_rate": 49.5 },
-    { "name": "Draven", "win_rate": 48.53 },
-    { "name": "Rell", "win_rate": 50.53 },
-    { "name": "Zac", "win_rate": 49.45 },
-    { "name": "Fiora", "win_rate": 50.3 },
-    { "name": "Urgot", "win_rate": 51.8 },
-    { "name": "Gangplank", "win_rate": 48.84 },
-    { "name": "Annie", "win_rate": 50.16 },
-    { "name": "Ambessa", "win_rate": 48.22 },
-    { "name": "Ryze", "win_rate": 49.86 },
-    { "name": "Rakan", "win_rate": 49.33 },
-    { "name": "Sivir", "win_rate": 50.67 },
-    { "name": "Elise", "win_rate": 50.11 },
-    { "name": "Heimerdinger", "win_rate": 51.54 },
-    { "name": "Sejuani", "win_rate": 48.96 },
-    { "name": "Illaoi", "win_rate": 50.41 },
-    { "name": "Gnar", "win_rate": 48.58 },
-    { "name": "Hecarim", "win_rate": 48.51 },
-    { "name": "Nunu & Willump", "win_rate": 49.77 },
-    { "name": "Sona", "win_rate": 52.26 },
-    { "name": "Kennen", "win_rate": 49.84 },
-    { "name": "Ornn", "win_rate": 50.9 },
-    { "name": "Aurora", "win_rate": 47.84 },
-    { "name": "Nidalee", "win_rate": 44.71 },
-    { "name": "Azir", "win_rate": 47.12 },
-    { "name": "Maokai", "win_rate": 50.57 },
-    { "name": "Quinn", "win_rate": 51.03 },
-    { "name": "Zeri", "win_rate": 49.18 },
-    { "name": "Kindred", "win_rate": 48.52 },
-    { "name": "Aurelion Sol", "win_rate": 51.06 },
-    { "name": "Lissandra", "win_rate": 50.38 },
-    { "name": "Taliyah", "win_rate": 49.34 },
-    { "name": "Ziggs", "win_rate": 49.82 },
-    { "name": "Camille", "win_rate": 48.9 },
-    { "name": "Singed", "win_rate": 51.47 },
-    { "name": "Janna", "win_rate": 51.29 },
-    { "name": "Bard", "win_rate": 49.71 },
-    { "name": "Evelynn", "win_rate": 49.09 },
-    { "name": "Akshan", "win_rate": 49.21 },
-    { "name": "Anivia", "win_rate": 50.98 },
-    { "name": "K'Sante", "win_rate": 46.33 },
-    { "name": "Udyr", "win_rate": 48.76 },
-    { "name": "Rumble", "win_rate": 47.65 },
-    { "name": "Rengar", "win_rate": 44.96 },
-    { "name": "Rammus", "win_rate": 50.95 },
-    { "name": "Qiyana", "win_rate": 47.55 },
-    { "name": "Zilean", "win_rate": 51.29 },
-    { "name": "Corki", "win_rate": 47.55 },
-    { "name": "Shyvana", "win_rate": 51.02 },
-    { "name": "Olaf", "win_rate": 50.67 },
-    { "name": "Nilah", "win_rate": 53.18 },
-    { "name": "Karthus", "win_rate": 49.05 },
-    { "name": "Cassiopeia", "win_rate": 50.7 },
-    { "name": "Kog'Maw", "win_rate": 52.02 },
-    { "name": "Kassadin", "win_rate": 49.94 },
-    { "name": "Kalista", "win_rate": 46.35 },
-    { "name": "Bel'Veth", "win_rate": 48.91 },
-    { "name": "Ivern", "win_rate": 49.6 },
-    { "name": "Taric", "win_rate": 52.15 },
-    { "name": "Kled", "win_rate": 50.67 },
-    { "name": "Renata Glasc", "win_rate": 49.16 },
-    { "name": "Skarner", "win_rate": 49.53 },
-    { "name": "Rek'Sai", "win_rate": 48.86 }
+    {
+      "name": "Aatrox",
+      "win_rate": 48.78
+    },
+    {
+      "name": "Ahri",
+      "win_rate": 51.25
+    },
+    {
+      "name": "Akali",
+      "win_rate": 49.68
+    },
+    {
+      "name": "Akshan",
+      "win_rate": 50.38
+    },
+    {
+      "name": "Alistar",
+      "win_rate": 48.93
+    },
+    {
+      "name": "Ambessa",
+      "win_rate": 49.61
+    },
+    {
+      "name": "Amumu",
+      "win_rate": 51.65
+    },
+    {
+      "name": "Anivia",
+      "win_rate": 49.97
+    },
+    {
+      "name": "Annie",
+      "win_rate": 50.38
+    },
+    {
+      "name": "Aphelios",
+      "win_rate": 49.08
+    },
+    {
+      "name": "Ashe",
+      "win_rate": 50.69
+    },
+    {
+      "name": "Aurelion Sol",
+      "win_rate": 49.8
+    },
+    {
+      "name": "Aurora",
+      "win_rate": 49.39
+    },
+    {
+      "name": "Azir",
+      "win_rate": 44.9
+    },
+    {
+      "name": "Bard",
+      "win_rate": 50.98
+    },
+    {
+      "name": "Bel'Veth",
+      "win_rate": 50.31
+    },
+    {
+      "name": "Blitzcrank",
+      "win_rate": 49.2
+    },
+    {
+      "name": "Brand",
+      "win_rate": 51.3
+    },
+    {
+      "name": "Braum",
+      "win_rate": 50.37
+    },
+    {
+      "name": "Briar",
+      "win_rate": 52.4
+    },
+    {
+      "name": "Caitlyn",
+      "win_rate": 48.87
+    },
+    {
+      "name": "Camille",
+      "win_rate": 49.12
+    },
+    {
+      "name": "Cassiopeia",
+      "win_rate": 50.78
+    },
+    {
+      "name": "Cho'Gath",
+      "win_rate": 49.95
+    },
+    {
+      "name": "Corki",
+      "win_rate": 48.37
+    },
+    {
+      "name": "Darius",
+      "win_rate": 49.68
+    },
+    {
+      "name": "Diana",
+      "win_rate": 51.5
+    },
+    {
+      "name": "Dr. Mundo",
+      "win_rate": 51.43
+    },
+    {
+      "name": "Draven",
+      "win_rate": 48.69
+    },
+    {
+      "name": "Ekko",
+      "win_rate": 49.9
+    },
+    {
+      "name": "Elise",
+      "win_rate": 50.63
+    },
+    {
+      "name": "Evelynn",
+      "win_rate": 50.1
+    },
+    {
+      "name": "Ezreal",
+      "win_rate": 48.27
+    },
+    {
+      "name": "Fiddlesticks",
+      "win_rate": 51.88
+    },
+    {
+      "name": "Fiora",
+      "win_rate": 50.61
+    },
+    {
+      "name": "Fizz",
+      "win_rate": 50.57
+    },
+    {
+      "name": "Galio",
+      "win_rate": 49.56
+    },
+    {
+      "name": "Gangplank",
+      "win_rate": 48.89
+    },
+    {
+      "name": "Garen",
+      "win_rate": 51.07
+    },
+    {
+      "name": "Gnar",
+      "win_rate": 50.08
+    },
+    {
+      "name": "Gragas",
+      "win_rate": 48.81
+    },
+    {
+      "name": "Graves",
+      "win_rate": 50.12
+    },
+    {
+      "name": "Gwen",
+      "win_rate": 49.45
+    },
+    {
+      "name": "Hecarim",
+      "win_rate": 48.88
+    },
+    {
+      "name": "Heimerdinger",
+      "win_rate": 51.37
+    },
+    {
+      "name": "Hwei",
+      "win_rate": 50
+    },
+    {
+      "name": "Illaoi",
+      "win_rate": 51.17
+    },
+    {
+      "name": "Irelia",
+      "win_rate": 49.68
+    },
+    {
+      "name": "Ivern",
+      "win_rate": 51.36
+    },
+    {
+      "name": "Janna",
+      "win_rate": 52.07
+    },
+    {
+      "name": "Jarvan IV",
+      "win_rate": 51.04
+    },
+    {
+      "name": "Jax",
+      "win_rate": 49.89
+    },
+    {
+      "name": "Jayce",
+      "win_rate": 48.77
+    },
+    {
+      "name": "Jhin",
+      "win_rate": 50.31
+    },
+    {
+      "name": "Jinx",
+      "win_rate": 50.72
+    },
+    {
+      "name": "K'Sante",
+      "win_rate": 46.16
+    },
+    {
+      "name": "Kai'Sa",
+      "win_rate": 49.33
+    },
+    {
+      "name": "Kalista",
+      "win_rate": 46.32
+    },
+    {
+      "name": "Karma",
+      "win_rate": 50.79
+    },
+    {
+      "name": "Karthus",
+      "win_rate": 48.22
+    },
+    {
+      "name": "Kassadin",
+      "win_rate": 50.7
+    },
+    {
+      "name": "Katarina",
+      "win_rate": 50.11
+    },
+    {
+      "name": "Kayle",
+      "win_rate": 52
+    },
+    {
+      "name": "Kayn",
+      "win_rate": 50.29
+    },
+    {
+      "name": "Kennen",
+      "win_rate": 50.88
+    },
+    {
+      "name": "Kha'Zix",
+      "win_rate": 50.75
+    },
+    {
+      "name": "Kindred",
+      "win_rate": 49.97
+    },
+    {
+      "name": "Kled",
+      "win_rate": 51.25
+    },
+    {
+      "name": "Kog'Maw",
+      "win_rate": 52.23
+    },
+    {
+      "name": "LeBlanc",
+      "win_rate": 49.38
+    },
+    {
+      "name": "Lee Sin",
+      "win_rate": 49.16
+    },
+    {
+      "name": "Leona",
+      "win_rate": 51.27
+    },
+    {
+      "name": "Lillia",
+      "win_rate": 50.63
+    },
+    {
+      "name": "Lissandra",
+      "win_rate": 51.06
+    },
+    {
+      "name": "Lucian",
+      "win_rate": 48.71
+    },
+    {
+      "name": "Lulu",
+      "win_rate": 50.25
+    },
+    {
+      "name": "Lux",
+      "win_rate": 49.4
+    },
+    {
+      "name": "Malphite",
+      "win_rate": 52.01
+    },
+    {
+      "name": "Malzahar",
+      "win_rate": 51.38
+    },
+    {
+      "name": "Maokai",
+      "win_rate": 51.31
+    },
+    {
+      "name": "Master Yi",
+      "win_rate": 50.75
+    },
+    {
+      "name": "Mel",
+      "win_rate": 48.27
+    },
+    {
+      "name": "Milio",
+      "win_rate": 52.7
+    },
+    {
+      "name": "Miss Fortune",
+      "win_rate": 51.96
+    },
+    {
+      "name": "Mordekaiser",
+      "win_rate": 50.72
+    },
+    {
+      "name": "Morgana",
+      "win_rate": 50.5
+    },
+    {
+      "name": "Naafiri",
+      "win_rate": 51.3
+    },
+    {
+      "name": "Nami",
+      "win_rate": 52.28
+    },
+    {
+      "name": "Nasus",
+      "win_rate": 51.39
+    },
+    {
+      "name": "Nautilus",
+      "win_rate": 49.29
+    },
+    {
+      "name": "Neeko",
+      "win_rate": 48.31
+    },
+    {
+      "name": "Nidalee",
+      "win_rate": 47.93
+    },
+    {
+      "name": "Nilah",
+      "win_rate": 52.33
+    },
+    {
+      "name": "Nocturne",
+      "win_rate": 52.16
+    },
+    {
+      "name": "Nunu & Willump",
+      "win_rate": 50.19
+    },
+    {
+      "name": "Olaf",
+      "win_rate": 51.83
+    },
+    {
+      "name": "Orianna",
+      "win_rate": 49.06
+    },
+    {
+      "name": "Ornn",
+      "win_rate": 51.02
+    },
+    {
+      "name": "Pantheon",
+      "win_rate": 47.88
+    },
+    {
+      "name": "Poppy",
+      "win_rate": 51.81
+    },
+    {
+      "name": "Pyke",
+      "win_rate": 48.9
+    },
+    {
+      "name": "Qiyana",
+      "win_rate": 49.29
+    },
+    {
+      "name": "Quinn",
+      "win_rate": 51.4
+    },
+    {
+      "name": "Rakan",
+      "win_rate": 49.89
+    },
+    {
+      "name": "Rammus",
+      "win_rate": 52.17
+    },
+    {
+      "name": "Rek'Sai",
+      "win_rate": 51.44
+    },
+    {
+      "name": "Rell",
+      "win_rate": 51.59
+    },
+    {
+      "name": "Renata Glasc",
+      "win_rate": 49.83
+    },
+    {
+      "name": "Renekton",
+      "win_rate": 49.57
+    },
+    {
+      "name": "Rengar",
+      "win_rate": 46.88
+    },
+    {
+      "name": "Riven",
+      "win_rate": 49.82
+    },
+    {
+      "name": "Rumble",
+      "win_rate": 48.98
+    },
+    {
+      "name": "Ryze",
+      "win_rate": 48.73
+    },
+    {
+      "name": "Samira",
+      "win_rate": 50.66
+    },
+    {
+      "name": "Sejuani",
+      "win_rate": 48.46
+    },
+    {
+      "name": "Senna",
+      "win_rate": 51.27
+    },
+    {
+      "name": "Seraphine",
+      "win_rate": 51.29
+    },
+    {
+      "name": "Sett",
+      "win_rate": 51.3
+    },
+    {
+      "name": "Shaco",
+      "win_rate": 49.91
+    },
+    {
+      "name": "Shen",
+      "win_rate": 51.65
+    },
+    {
+      "name": "Shyvana",
+      "win_rate": 50.28
+    },
+    {
+      "name": "Singed",
+      "win_rate": 52.2
+    },
+    {
+      "name": "Sion",
+      "win_rate": 50.47
+    },
+    {
+      "name": "Sivir",
+      "win_rate": 50.93
+    },
+    {
+      "name": "Skarner",
+      "win_rate": 44.31
+    },
+    {
+      "name": "Smolder",
+      "win_rate": 51.1
+    },
+    {
+      "name": "Sona",
+      "win_rate": 51.87
+    },
+    {
+      "name": "Soraka",
+      "win_rate": 52.05
+    },
+    {
+      "name": "Swain",
+      "win_rate": 50.81
+    },
+    {
+      "name": "Sylas",
+      "win_rate": 49.33
+    },
+    {
+      "name": "Syndra",
+      "win_rate": 50.52
+    },
+    {
+      "name": "Tahm Kench",
+      "win_rate": 49.08
+    },
+    {
+      "name": "Taliyah",
+      "win_rate": 48.27
+    },
+    {
+      "name": "Talon",
+      "win_rate": 50.57
+    },
+    {
+      "name": "Taric",
+      "win_rate": 52.12
+    },
+    {
+      "name": "Teemo",
+      "win_rate": 51.34
+    },
+    {
+      "name": "Thresh",
+      "win_rate": 50.11
+    },
+    {
+      "name": "Tristana",
+      "win_rate": 50.79
+    },
+    {
+      "name": "Trundle",
+      "win_rate": 49.17
+    },
+    {
+      "name": "Tryndamere",
+      "win_rate": 47.92
+    },
+    {
+      "name": "Twisted Fate",
+      "win_rate": 49.6
+    },
+    {
+      "name": "Twitch",
+      "win_rate": 49.87
+    },
+    {
+      "name": "Udyr",
+      "win_rate": 47.44
+    },
+    {
+      "name": "Urgot",
+      "win_rate": 51.43
+    },
+    {
+      "name": "Varus",
+      "win_rate": 47.26
+    },
+    {
+      "name": "Vayne",
+      "win_rate": 50.02
+    },
+    {
+      "name": "Veigar",
+      "win_rate": 51.38
+    },
+    {
+      "name": "Vel'Koz",
+      "win_rate": 51.73
+    },
+    {
+      "name": "Vex",
+      "win_rate": 51.13
+    },
+    {
+      "name": "Vi",
+      "win_rate": 48.22
+    },
+    {
+      "name": "Viego",
+      "win_rate": 49.32
+    },
+    {
+      "name": "Viktor",
+      "win_rate": 49.74
+    },
+    {
+      "name": "Vladimir",
+      "win_rate": 50
+    },
+    {
+      "name": "Volibear",
+      "win_rate": 50.16
+    },
+    {
+      "name": "Warwick",
+      "win_rate": 50.54
+    },
+    {
+      "name": "Wukong",
+      "win_rate": 49.5
+    },
+    {
+      "name": "Xayah",
+      "win_rate": 50.09
+    },
+    {
+      "name": "Xerath",
+      "win_rate": 50.75
+    },
+    {
+      "name": "Xin Zhao",
+      "win_rate": 51.42
+    },
+    {
+      "name": "Yasuo",
+      "win_rate": 49.04
+    },
+    {
+      "name": "Yone",
+      "win_rate": 47.73
+    },
+    {
+      "name": "Yorick",
+      "win_rate": 50.11
+    },
+    {
+      "name": "Yunara",
+      "win_rate": 47.99
+    },
+    {
+      "name": "Yuumi",
+      "win_rate": 48.32
+    },
+    {
+      "name": "Zaahen",
+      "win_rate": 49.18
+    },
+    {
+      "name": "Zac",
+      "win_rate": 51.33
+    },
+    {
+      "name": "Zed",
+      "win_rate": 48.93
+    },
+    {
+      "name": "Zeri",
+      "win_rate": 49.86
+    },
+    {
+      "name": "Ziggs",
+      "win_rate": 51.7
+    },
+    {
+      "name": "Zilean",
+      "win_rate": 51.1
+    },
+    {
+      "name": "Zoe",
+      "win_rate": 48.85
+    },
+    {
+      "name": "Zyra",
+      "win_rate": 51.33
+    }
   ]
 }
