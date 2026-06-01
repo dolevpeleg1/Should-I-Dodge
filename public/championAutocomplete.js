@@ -17,6 +17,28 @@
     return byLower.get(value.trim().toLowerCase()) || null;
   }
 
+  function pickUniqueRandom(count) {
+    const pool = [...names];
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    return pool.slice(0, Math.min(count, pool.length));
+  }
+
+  const DODGE_CALCULATOR_FIELDS = [
+    "top",
+    "jungler",
+    "mid",
+    "bot",
+    "support",
+    "etop",
+    "ejungler",
+    "emid",
+    "ebot",
+    "esupport",
+  ];
+
   function initWidget(root) {
     const input = root.querySelector(".champion-autocomplete__input");
     const list = root.querySelector(".champion-autocomplete__list");
@@ -116,6 +138,33 @@
   }
 
   document.querySelectorAll(".champion-autocomplete").forEach(initWidget);
+
+  const randomizeBtn = document.getElementById("randomize-teams");
+  if (randomizeBtn) {
+    randomizeBtn.addEventListener("click", () => {
+      const form = randomizeBtn.closest("form");
+      if (!form) return;
+
+      const picked = pickUniqueRandom(DODGE_CALCULATOR_FIELDS.length);
+      DODGE_CALCULATOR_FIELDS.forEach((fieldName, index) => {
+        const input = form.querySelector(
+          `input[name="${fieldName}"].champion-autocomplete__input`
+        );
+        if (!input || picked[index] == null) return;
+        input.value = picked[index];
+        input.setCustomValidity("");
+      });
+
+      form.querySelectorAll(".champion-autocomplete__list").forEach((list) => {
+        list.hidden = true;
+      });
+      form
+        .querySelectorAll(".champion-autocomplete__input")
+        .forEach((input) => {
+          input.setAttribute("aria-expanded", "false");
+        });
+    });
+  }
 
   document.querySelectorAll("form").forEach((form) => {
     if (!form.querySelector(".champion-autocomplete__input")) return;

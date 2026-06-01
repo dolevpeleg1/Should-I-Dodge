@@ -369,6 +369,14 @@ img {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.form-actions__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  width: 100%;
+}
+
 .form-actions p {
   margin: 0;
   font-size: 0.9rem;
@@ -726,7 +734,7 @@ select:focus,
     min-width: unset;
   }
 
-  .form-actions .btn {
+  .form-actions__buttons .btn {
     width: 100%;
   }
 

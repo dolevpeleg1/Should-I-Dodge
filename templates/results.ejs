@@ -16,11 +16,11 @@
         <div class="result-stats">
           <div class="stat-block stat-block--ally">
             <p class="stat-label">Ally team</p>
-            <p class="stat-value"><%= parseFloat(winrate).toFixed(1) %>%</p>
+            <p class="stat-value"><%= Number(winrate).toFixed(1) %>%</p>
           </div>
           <div class="stat-block stat-block--enemy">
             <p class="stat-label">Enemy team</p>
-            <p class="stat-value"><%= parseFloat(ewinrate).toFixed(1) %>%</p>
+            <p class="stat-value"><%= Number(ewinrate).toFixed(1) %>%</p>
           </div>
         </div>
 

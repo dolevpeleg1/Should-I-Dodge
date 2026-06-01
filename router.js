@@ -69,17 +69,22 @@ router.post("/results", (request, response) => {
     }
   }
 
-  const winrate = allyWinrateSum / 5;
-  const ewinrate = eWinrateSum / 5;
+  const allyAvg = allyWinrateSum / 5;
+  const enemyAvg = eWinrateSum / 5;
+  // Match verdict to displayed % (one decimal) so equal on screen = draw
+  const allyDisplay = Math.round(allyAvg * 10) / 10;
+  const enemyDisplay = Math.round(enemyAvg * 10) / 10;
+
   let verdict = "even";
-  if (winrate > ewinrate) {
+  if (allyDisplay > enemyDisplay) {
     verdict = "favorable";
-  } else if (winrate < ewinrate) {
+  } else if (allyDisplay < enemyDisplay) {
     verdict = "dodge";
   }
+
   response.render("results", {
-    winrate: winrate.toFixed(3),
-    ewinrate: ewinrate.toFixed(3),
+    winrate: allyDisplay,
+    ewinrate: enemyDisplay,
     verdict: verdict,
   });
 });
