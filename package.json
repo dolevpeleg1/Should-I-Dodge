@@ -1,5 +1,5 @@
 {
-  "name": "final-project",
+  "name": "should-i-dodge",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
@@ -7,9 +7,9 @@
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Dolev Peleg",
   "license": "ISC",
-  "description": "",
+  "description": "League of Legends dodge calculator — compare team win rates and find champion guides.",
   "dependencies": {
     "axios": "^1.9.0",
     "bcrypt": "^6.0.0",
