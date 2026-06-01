@@ -15,6 +15,9 @@
   "author": "Dolev Peleg",
   "license": "ISC",
   "description": "League of Legends dodge calculator — compare team win rates and find champion guides.",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "axios": "^1.9.0",
     "dotenv": "^16.5.0",

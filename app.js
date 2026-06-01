@@ -13,7 +13,12 @@ app.set("views", path.resolve(__dirname, "templates"));
 // routes
 app.use("/", routes);
 
-// start server
-const portNumber = 3000;
-app.listen(portNumber);
-console.log(`To access server: http://localhost:${portNumber}`);
+module.exports = app;
+
+// Local dev: `npm start` / `npm run dev`
+if (require.main === module) {
+  const portNumber = Number(process.env.PORT) || 3000;
+  app.listen(portNumber, () => {
+    console.log(`To access server: http://localhost:${portNumber}`);
+  });
+}

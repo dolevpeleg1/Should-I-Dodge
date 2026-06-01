@@ -26,6 +26,7 @@ A fan-made **League of Legends** web app that compares team compositions using a
 - **Champion guides** via YouTube Data API v3 when `YOUTUBE_API_KEY` is set
 - **Data refresh scripts** to pull names from Riot Data Dragon and win rates from a public Hugging Face dataset (or manual CSV)
 - **Responsive layout** for phones and tablets (see [Responsive design](#responsive-design))
+- **Deployable on Vercel** — serverless Express via `api/index.js` and `vercel.json` (see [Deployment](#deployment))
 
 ---
 
@@ -68,12 +69,71 @@ A fan-made **League of Legends** web app that compares team compositions using a
 
    Restart the server (`Ctrl+C`, then `npm start`) so changes load immediately. The server also reloads the JSON file on a timer if `CHAMPION_CACHE_REFRESH_MS` is set.
 
+To put the app online, see [Deployment](#deployment).
+
+---
+
+## Deployment
+
+This app runs as a single **Express** server locally (`npm start`) and on **[Vercel](https://vercel.com)** as a serverless function (`api/index.js` re-exporting `app.js`). Static assets in `public/` (CSS, `championWinrates.json`) are served by Vercel’s CDN; all page routes go through Express for EJS rendering and POST handlers.
+
+| | Local | Vercel |
+|---|--------|--------|
+| Start | `npm start` → port 3000 | Automatic on push or `vercel --prod` |
+| Env vars | `.env` (from `.env.example`) | Project → Settings → Environment Variables |
+| Champion data sync | `npm run sync-champions` | Run locally, commit JSON, redeploy |
+| JSON hot-reload | Optional (`CHAMPION_CACHE_REFRESH_MS`) | Disabled (`VERCEL` is set) |
+
+The **dodge calculator** needs no secrets. **Champion guides** require `YOUTUBE_API_KEY` in production.
+
+### Deploy with GitHub (recommended)
+
+1. Push this repo to GitHub.
+2. Open [vercel.com/new](https://vercel.com/new) and import **Should-I-Dodge**.
+3. Use the defaults: **no** custom build command, **no** output directory override.
+4. Add `YOUTUBE_API_KEY` under Environment Variables if you want guide search (Production + Preview).
+5. Deploy. Future pushes to `main` trigger automatic redeploys.
+
+### Deploy with the CLI
+
+```bash
+npm i -g vercel    # once
+vercel login
+vercel             # preview URL
+vercel --prod      # production URL
+```
+
+Run these from the project root. Link the folder to your Vercel account when prompted.
+
+### Environment variables on Vercel
+
+| Name | Required | Notes |
+|------|----------|--------|
+| `YOUTUBE_API_KEY` | No | YouTube Data API v3 for `/championPage` guides |
+| `CHAMPION_CACHE_REFRESH_MS` | No | Leave unset on Vercel; periodic reload is off in serverless |
+
+Restrict the YouTube key in [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to **YouTube Data API v3** and monitor quota.
+
+### Updating data in production
+
+1. Locally: `npm run sync-champions` (or edit `data/winrates.csv` and `npm run import-winrates`).
+2. Commit `public/championWinrates.json` (and `data/winrates.csv` if you want it in the repo).
+3. Push — Vercel redeploys with the new bundle.
+
+Do **not** run Hugging Face / DuckDB sync scripts on Vercel; they are for local dev only.
+
+### Other hosts
+
+Any Node host that runs `node app.js` (Railway, Render, Fly.io, etc.) works without `api/index.js`. Set `PORT` if the platform provides it, and use the same env vars as above.
+
 ---
 
 ## Project layout
 
 ```
-app.js              Express entry (port 3000)
+app.js              Express app (local: port 3000; Vercel: api/index.js)
+api/index.js        Vercel serverless entry
+vercel.json         Rewrites all routes to the Express app
 router.js           Routes and dodge / YouTube handlers
 lib/
   championData.js   Loads and caches championWinrates.json
@@ -125,6 +185,7 @@ Win rates are **unofficial estimates** for entertainment, not live Riot meta. Th
 - **Runtime:** Node.js, Express 5, EJS
 - **Client:** Server-rendered HTML + CSS in `public/`
 - **Data:** Riot Data Dragon, Hugging Face dataset (or manual CSV), optional YouTube Data API v3
+- **Hosting:** Vercel (serverless) or any Node process host — see [Deployment](#deployment)
 
 ---
 

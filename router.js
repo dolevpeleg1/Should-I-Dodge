@@ -19,7 +19,9 @@ const championMeta = () => getChampionMetadata();
 
 const refreshMs =
   Number(process.env.CHAMPION_CACHE_REFRESH_MS) || DEFAULT_REFRESH_MS;
-startChampionCacheRefresh(refreshMs);
+if (!process.env.VERCEL) {
+  startChampionCacheRefresh(refreshMs);
+}
 
 router.get("/", (request, response) => {
   response.render("index");
@@ -93,6 +95,14 @@ router.post("/generateVideo", (request, response) => {
   (async () => {
     const champion = request.body.targetChamp;
     const apiKey = process.env.YOUTUBE_API_KEY;
+
+    if (!apiKey) {
+      return response
+        .status(503)
+        .send(
+          "Champion video guides are not configured. Set YOUTUBE_API_KEY in your environment."
+        );
+    }
 
     try {
       const query = `${champion} league of legends guide`;
