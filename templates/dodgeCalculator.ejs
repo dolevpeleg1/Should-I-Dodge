@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Should I Dodge?</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="login">
+      <h2 style="margin-top: 3rem">
+        Please pick your team and enemy compositions
+      </h2>
+      <form class="loginForm" action="/results" method="post">
+        <span class="champSelectSpan">
+          <div class="champiosDiv">
+            <h2 style="color: rgb(140, 178, 248)">Ally team</h2>
+            <label for="top">Top</label>
+            <select id="top" name="top" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+            <label for="mid">Mid</label>
+            <select id="mid" name="mid" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+            <label for="jungler">Jungler</label>
+            <select id="jungler" name="jungler" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+            <label for="bot">Bot</label>
+            <select id="bot" name="bot" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+            <label for="support">Support</label>
+            <select id="support" name="support" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="champiosDiv">
+            <h2 style="color: rgb(231, 50, 5)">Enemy team</h2>
+            <label for="etop">Top</label>
+            <select id="etop" name="etop" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+            <label for="emid">Mid</label>
+            <select id="emid" name="emid" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+            <label for="ejungler">Jungler</label>
+            <select id="ejungler" name="ejungler">
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+            <label for="ebot">Bot</label>
+            <select id="ebot" name="ebot" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+            <label for="esupport">Support</label>
+            <select id="esupport" name="esupport" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+          </div>
+        </span>
+        <br>
+        <button type="submit">Calculate</button>
+        <br>
+        Not sure how to play your champion? <a href="/championPage">Click here</a>
+        <a href="/"><h2>Return to login page</h2></a>
+      </form>
+    </div>
+    <footer>
+      Created by Dolev Peleg. Please note that this website was made as a fan
+      project and is not associated with Riot Games&copy;.
+    </footer>
+  </body>
+</html>

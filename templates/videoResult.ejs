@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Should I Dodge?</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="login">
+      <div class="videoDiv">
+        <h2>Guide for <%= champion %></h2>
+        <iframe
+          class="video"
+          src="<%= videoUrl %>"
+          title="YouTube video player"
+          allowfullscreen
+        >
+        </iframe>
+        <br />
+        <h2><a href="/championPage">Search another champion</a></h2>
+        <h2><a href="/dodgeCalculator">Return to the dodge calculator</a></h2>
+      </div>
+    </div>
+    <footer>
+      Created by Dolev Peleg. Please note that this website was made as a fan
+      project and is not associated with Riot Games&copy;.
+    </footer>
+  </body>
+</html>

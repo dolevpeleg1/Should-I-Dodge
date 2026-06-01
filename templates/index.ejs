@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Should I Dodge?</title>
+    <link rel="icon" href="/images/KayleSquare.webp" type="image/webp">
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- Google font (Roboto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="title">
+      <h1>Welcome to <em>Should I Dodge</em></h1>
+      <h2>
+        This website calculates your potential win-rate in League of Legends
+        based on teams compositions
+      </h2>
+    </div>
+    <div class="login">
+      <form class="loginForm" action="/dodgeCalculator" method="post">
+        <h2>Please log in to get started</h2>
+        <label for="userName">Username</label
+        ><input type="text" id="userName" name="userName" required /><br />
+        <label for="password">Password</label
+        ><input type="password" id="password" name="password" required /><br />
+        <a href="/signUp">Don't have a user? Sign up here!</a><br />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+    <footer>
+      Created by Dolev Peleg. Please note that this website was made as a fan
+      project and is not associated with Riot Games&copy;.
+    </footer>
+  </body>
+</html>

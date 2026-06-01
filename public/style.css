@@ -1,0 +1,115 @@
+html {
+  font-size: 16px;
+  background-image: url("/images/DefeatVictory.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
+
+body {
+  /* My chosen Google font: Roboto */
+  font-family: "Roboto", sans-serif;
+}
+
+.title {
+  text-align: center;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 30%;
+}
+
+footer {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 1rem;
+}
+
+a {
+  color: rgb(140, 178, 248);
+}
+
+button {
+  padding: 8px;
+}
+
+.midScreenMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 30%;
+  margin: auto;
+}
+
+.champSelectSpan {
+  display: flex;
+  text-align: center;
+  gap: 1rem;
+}
+
+.resultDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 30%;
+  margin: auto;
+  text-align: center;
+}
+
+.champiosDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.videoDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+}
+
+.videoDiv iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 8px;
+}

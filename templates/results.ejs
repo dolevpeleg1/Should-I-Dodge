@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Should I Dodge?</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="login">
+      <div class="resultDiv">
+        <span class="champSelectSpan">
+          <div>
+            <h2 style="color: rgb(140, 178, 248)">Ally team winrate:</h2>
+            <h2 style="color: rgb(140, 178, 248)"><%= winrate %></h2>
+          </div>
+          <div>
+            <h2 style="color: rgb(231, 50, 5)">Enemy team winrate:</h2>
+            <h2 style="color: rgb(231, 50, 5)"><%= ewinrate %></h2>
+          </div>
+        </span>
+        <br>
+        <%- message %>
+        <a href="/dodgeCalculator"><h2>Try another composition</h2></a>
+        <a href="/"><h2>Return to login page</h2></a>
+      </div>
+    </div>
+    <footer>
+      Created by Dolev Peleg. Please note that this website was made as a fan
+      project and is not associated with Riot Games&copy;.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Should I Dodge?</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="login">
+        <h2 style="margin-top: 3rem">
+        Choose a champion, and a video guide will be provided
+      </h2>
+      <form class="loginForm" action="/generateVideo" method="post">
+        <span class="champSelectSpan">
+          <div class="champiosDiv">
+            <select id="targetChamp" name="targetChamp" required>
+              <option value="" disabled selected>Select a champion</option>
+              <% champions.forEach(champion => { %>
+              <option value="<%= champion.name %>"><%= champion.name %></option>
+              <% }) %>
+            </select>
+          </div>
+        </span>
+        <br>
+        <button type="submit">Search</button>
+        <a href="/dodgeCalculator"><h2>Return to the dodge calculator</h2></a>
+      </form>
+    </div>
+    <footer>Created by Dolev Peleg. Please note that this website was made as a fan project and is not associated with Riot Games&copy;.</footer>
+</body>
+</html>
