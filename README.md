@@ -25,6 +25,7 @@ A fan-made **League of Legends** web app that compares team compositions using a
 - **Verdict** based on average win rates (not ML or live game data)
 - **Champion guides** via YouTube Data API v3 when `YOUTUBE_API_KEY` is set
 - **Data refresh scripts** to pull names from Riot Data Dragon and win rates from a public Hugging Face dataset (or manual CSV)
+- **Responsive layout** for phones and tablets (see [Responsive design](#responsive-design))
 
 ---
 
@@ -124,6 +125,28 @@ Win rates are **unofficial estimates** for entertainment, not live Riot meta. Th
 - **Runtime:** Node.js, Express 5, EJS
 - **Client:** Server-rendered HTML + CSS in `public/`
 - **Data:** Riot Data Dragon, Hugging Face dataset (or manual CSV), optional YouTube Data API v3
+
+---
+
+## Responsive design
+
+The UI is built with plain CSS in `public/style.css`—no separate mobile app. Layout adapts from desktop down to iPhone-sized screens.
+
+| Breakpoint | Behavior |
+|------------|----------|
+| **≤768px** | Dodge calculator teams stack vertically; hero cards and result stats use a single column; buttons and form links go full width |
+| **≤480px** | Compact header with full-width nav taps; tighter padding and typography |
+
+**Mobile-friendly details:**
+
+- Viewport meta and `theme-color` for mobile browsers
+- Safe-area padding for notched iPhones (`viewport-fit=cover`)
+- Touch targets at least ~44px on buttons, nav links, and champion selects
+- 16px form controls to avoid iOS zoom-on-focus
+- Scroll-based background on small screens (fixed parallax only on wider viewports)
+- Embedded YouTube guides scale with `aspect-ratio: 16 / 9`
+
+To check on a phone: run the app locally, open `http://<your-computer-ip>:3000` on the same Wi‑Fi, or deploy and test in Safari/Chrome mobile. Resize the browser devtools device toolbar for a quick desktop preview.
 
 ---
 
