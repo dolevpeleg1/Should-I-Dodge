@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Should I Dodge?</title>
-    <link rel="stylesheet" href="/style.css" />
+    <%- include('partials/head', { pageTitle: champion + ' guide' }) %>
   </head>
   <body>
-    <div class="login">
-      <div class="videoDiv">
-        <h2>Guide for <%= champion %></h2>
-        <iframe
-          class="video"
-          src="<%= videoUrl %>"
-          title="YouTube video player"
-          allowfullscreen
-        >
-        </iframe>
-        <br />
-        <h2><a href="/championPage">Search another champion</a></h2>
-        <h2><a href="/dodgeCalculator">Return to the dodge calculator</a></h2>
+    <%- include('partials/header', { navActive: 'guides' }) %>
+
+    <main class="page-main page-main--wide">
+      <div class="page-intro">
+        <h1>Guide for <%= champion %></h1>
       </div>
-    </div>
-    <footer>
-      Created by Dolev Peleg. Please note that this website was made as a fan
-      project and is not associated with Riot Games&copy;.
-    </footer>
+
+      <div class="card card--video">
+        <div class="video-wrap">
+          <iframe
+            src="<%= videoUrl %>"
+            title="YouTube video player — <%= champion %> guide"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="form-footer-links">
+          <a href="/championPage" class="btn">Search another champion</a>
+          <a href="/dodgeCalculator" class="btn btn--secondary">Dodge calculator</a>
+          <a href="/" class="btn btn--secondary">Back to home</a>
+        </div>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
   </body>
 </html>

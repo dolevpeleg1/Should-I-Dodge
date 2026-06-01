@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('partials/head', { pageTitle: 'Champion guides' }) %>
+  </head>
+  <body>
+    <%- include('partials/header', { navActive: 'guides' }) %>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Should I Dodge?</title>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <div class="login">
-        <h2 style="margin-top: 3rem">
-        Choose a champion, and a video guide will be provided
-      </h2>
+    <main class="page-main">
+      <div class="page-intro">
+        <h1>Champion guides</h1>
+        <p>Pick a champion and we'll find a YouTube guide for you.</p>
+      </div>
+
       <%- include('partials/championDataNotice') %>
-      <form class="loginForm" action="/generateVideo" method="post">
-        <span class="champSelectSpan">
-          <div class="champiosDiv">
-            <select id="targetChamp" name="targetChamp" required>
-              <option value="" disabled selected>Select a champion</option>
-              <% champions.forEach(champion => { %>
-              <option value="<%= champion.name %>"><%= champion.name %></option>
-              <% }) %>
-            </select>
+
+      <form class="card card--centered" action="/generateVideo" method="post">
+        <div class="champion-select-single field">
+          <label for="targetChamp">Champion</label>
+          <select id="targetChamp" name="targetChamp" required>
+            <option value="" disabled selected>Select a champion</option>
+            <% champions.forEach(champion => { %>
+            <option value="<%= champion.name %>"><%= champion.name %></option>
+            <% }) %>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Search for guide</button>
+          <div class="form-footer-links">
+            <a href="/dodgeCalculator" class="btn btn--secondary">Dodge calculator</a>
+            <a href="/" class="btn btn--secondary">Back to home</a>
           </div>
-        </span>
-        <br>
-        <button type="submit">Search</button>
-        <a href="/dodgeCalculator"><h2>Return to the dodge calculator</h2></a>
+        </div>
       </form>
-    </div>
-    <footer>Created by Dolev Peleg. Please note that this website was made as a fan project and is not associated with Riot Games&copy;.</footer>
-</body>
+    </main>
+
+    <%- include('partials/footer') %>
+  </body>
 </html>

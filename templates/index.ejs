@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Should I Dodge?</title>
-    <link rel="icon" href="/images/KayleSquare.webp" type="image/webp">
-    <link rel="stylesheet" href="/style.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <%- include('partials/head', { pageTitle: '' }) %>
   </head>
   <body>
-    <div class="title">
-      <h1>Welcome to <em>Should I Dodge</em></h1>
-      <h2>
-        Compare team compositions using approximate champion win rates—no account
-        required.
-      </h2>
-    </div>
-    <div class="login">
-      <div class="loginForm">
-        <a href="/dodgeCalculator"><button type="button">Open dodge calculator</button></a>
-        <br />
-        <a href="/championPage"><h2>Champion video guides</h2></a>
-      </div>
-    </div>
-    <footer>
-      Created by Dolev Peleg. Please note that this website was made as a fan
-      project and is not associated with Riot Games&copy;.
-    </footer>
+    <%- include('partials/header', { navActive: 'home' }) %>
+
+    <main class="page-main">
+      <section class="hero">
+        <span class="hero-badge">League of Legends · Fan tool</span>
+        <h1>Should you <em>dodge</em>?</h1>
+        <p class="hero-lead">
+          Compare ally and enemy team compositions using approximate champion win rates—no account, no install.
+        </p>
+        <ul class="hero-features">
+          <li>5v5 comp comparison</li>
+          <li>Win-rate based suggestion</li>
+          <li>YouTube champion guides</li>
+        </ul>
+
+        <div class="hero-cards">
+          <article class="hero-card hero-card--ally">
+            <div class="hero-card-icon" aria-hidden="true">⚔</div>
+            <h2>Dodge calculator</h2>
+            <p>
+              Pick both teams in champ select and see which side has the better average win rate—and whether dodging is worth considering.
+            </p>
+            <a href="/dodgeCalculator" class="btn btn--block">Open calculator</a>
+          </article>
+
+          <article class="hero-card hero-card--guides">
+            <div class="hero-card-icon" aria-hidden="true">▶</div>
+            <h2>Champion guides</h2>
+            <p>
+              Not sure how to play your pick? Search for a champion and watch a quick YouTube guide before you lock in.
+            </p>
+            <a href="/championPage" class="btn btn--secondary btn--block">Browse guides</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <%- include('partials/footer') %>
   </body>
 </html>

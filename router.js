@@ -67,21 +67,18 @@ router.post("/results", (request, response) => {
     }
   }
 
-  let message = ``;
-
   const winrate = allyWinrateSum / 5;
   const ewinrate = eWinrateSum / 5;
+  let verdict = "even";
   if (winrate > ewinrate) {
-    message += `<h3 style="color: rgb(140, 178, 248);">Your team has better odds of winning. Do not dodge.</h3>`;
+    verdict = "favorable";
   } else if (winrate < ewinrate) {
-    message += `<h3 style="color: rgb(231, 50, 5);">Enemy team has better odds of winning. Consider dodging.</h3>`;
-  } else {
-    message += `<h3 style="color: white;">Both teams have equal chance of winning. Good luck, you'll need it.</h3>`;
+    verdict = "dodge";
   }
   response.render("results", {
     winrate: winrate.toFixed(3),
     ewinrate: ewinrate.toFixed(3),
-    message: message,
+    verdict: verdict,
   });
 });
 

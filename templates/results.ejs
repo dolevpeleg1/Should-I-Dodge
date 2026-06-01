@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Should I Dodge?</title>
-    <link rel="stylesheet" href="/style.css" />
+    <%- include('partials/head', { pageTitle: 'Results' }) %>
   </head>
   <body>
-    <div class="login">
-      <div class="resultDiv">
-        <span class="champSelectSpan">
-          <div>
-            <h2 style="color: rgb(140, 178, 248)">Ally team winrate:</h2>
-            <h2 style="color: rgb(140, 178, 248)"><%= winrate %></h2>
-          </div>
-          <div>
-            <h2 style="color: rgb(231, 50, 5)">Enemy team winrate:</h2>
-            <h2 style="color: rgb(231, 50, 5)"><%= ewinrate %></h2>
-          </div>
-        </span>
-        <br>
-        <%- message %>
-        <a href="/dodgeCalculator"><h2>Try another composition</h2></a>
-        <a href="/"><h2>Return home</h2></a>
+    <%- include('partials/header', { navActive: 'calculator' }) %>
+
+    <main class="page-main">
+      <div class="page-intro">
+        <h1>Matchup result</h1>
+        <p>Average win rates across each five-champion team.</p>
       </div>
-    </div>
-    <footer>
-      Created by Dolev Peleg. Please note that this website was made as a fan
-      project and is not associated with Riot Games&copy;.
-    </footer>
+
+      <div class="card card--results">
+        <div class="result-stats">
+          <div class="stat-block stat-block--ally">
+            <p class="stat-label">Ally team</p>
+            <p class="stat-value"><%= parseFloat(winrate).toFixed(1) %>%</p>
+          </div>
+          <div class="stat-block stat-block--enemy">
+            <p class="stat-label">Enemy team</p>
+            <p class="stat-value"><%= parseFloat(ewinrate).toFixed(1) %>%</p>
+          </div>
+        </div>
+
+        <% const outcome = locals.verdict || 'even'; %>
+        <% if (outcome === 'favorable') { %>
+        <p class="verdict verdict--favorable">Your team has better odds of winning. Do not dodge.</p>
+        <% } else if (outcome === 'dodge') { %>
+        <p class="verdict verdict--dodge">Enemy team has better odds of winning. Consider dodging.</p>
+        <% } else { %>
+        <p class="verdict verdict--even">Both teams have an equal chance of winning. Good luck—you'll need it.</p>
+        <% } %>
+
+        <div class="form-footer-links">
+          <a href="/dodgeCalculator" class="btn">Try another composition</a>
+          <a href="/" class="btn btn--secondary">Back to home</a>
+        </div>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
   </body>
 </html>
