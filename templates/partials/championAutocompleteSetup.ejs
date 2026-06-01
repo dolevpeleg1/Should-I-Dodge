@@ -1,4 +1,4 @@
-<script id="champion-names-data" type="application/json">
-  <%- JSON.stringify(champions.map((c) => c.name)) %>
+<script id="champion-picker-data" type="application/json">
+  <%- JSON.stringify(champions.map((c) => ({ name: c.name, win_rate: c.win_rate }))) %>
 </script>
 <script src="/championAutocomplete.js" defer></script>

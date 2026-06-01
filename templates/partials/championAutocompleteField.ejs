@@ -1,19 +1,25 @@
 <div class="field champion-autocomplete">
   <label for="<%= id %>"><%= label %></label>
-  <input
-    type="text"
-    id="<%= id %>"
-    name="<%= name %>"
-    class="champion-autocomplete__input"
-    autocomplete="off"
-    autocapitalize="off"
-    spellcheck="false"
-    placeholder="Type to search…"
-    required
-    role="combobox"
-    aria-autocomplete="list"
-    aria-expanded="false"
-    aria-controls="<%= id %>-list"
-  />
+  <div class="champion-autocomplete__control">
+    <input
+      type="text"
+      id="<%= id %>"
+      name="<%= name %>"
+      class="champion-autocomplete__input"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      placeholder="Type to search…"
+      required
+      role="combobox"
+      aria-autocomplete="list"
+      aria-expanded="false"
+      aria-controls="<%= id %>-list"
+    />
+    <div class="champion-autocomplete__winrate-col">
+      <span class="champion-autocomplete__winrate-label">Win Rate</span>
+      <span class="champion-autocomplete__winrate champion-autocomplete__winrate--empty" aria-live="polite">--</span>
+    </div>
+  </div>
   <ul class="champion-autocomplete__list" id="<%= id %>-list" role="listbox" hidden></ul>
 </div>

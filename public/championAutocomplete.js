@@ -1,11 +1,16 @@
 "use strict";
 
 (function () {
-  const dataEl = document.getElementById("champion-names-data");
+  const dataEl = document.getElementById("champion-picker-data");
   if (!dataEl) return;
 
-  const names = JSON.parse(dataEl.textContent);
+  const champions = JSON.parse(dataEl.textContent);
+  const names = champions.map((c) => c.name);
   const byLower = new Map(names.map((n) => [n.toLowerCase(), n]));
+  const winRateByLower = new Map(
+    champions.map((c) => [c.name.toLowerCase(), c.win_rate])
+  );
+  const showWinRates = document.querySelector("[data-show-win-rates]") != null;
 
   function filter(query) {
     const q = query.trim().toLowerCase();
@@ -15,6 +20,30 @@
 
   function resolve(value) {
     return byLower.get(value.trim().toLowerCase()) || null;
+  }
+
+  function formatWinRate(rate) {
+    return `${Number(rate).toFixed(1)}%`;
+  }
+
+  function updateWinRateDisplay(input) {
+    if (!showWinRates) return;
+
+    const badge = input
+      .closest(".champion-autocomplete")
+      ?.querySelector(".champion-autocomplete__winrate");
+    if (!badge) return;
+
+    const name = resolve(input.value);
+    const rate = name ? winRateByLower.get(name.toLowerCase()) : undefined;
+
+    if (name != null && typeof rate === "number") {
+      badge.textContent = formatWinRate(rate);
+      badge.classList.remove("champion-autocomplete__winrate--empty");
+    } else {
+      badge.textContent = "--";
+      badge.classList.add("champion-autocomplete__winrate--empty");
+    }
   }
 
   function pickUniqueRandom(count) {
@@ -79,6 +108,7 @@
     function selectName(name) {
       input.value = name;
       input.setCustomValidity("");
+      updateWinRateDisplay(input);
       closeList();
     }
 
@@ -91,6 +121,7 @@
 
     input.addEventListener("input", () => {
       input.setCustomValidity("");
+      updateWinRateDisplay(input);
       renderList(filter(input.value));
     });
 
@@ -108,6 +139,7 @@
         } else if (input.value.trim()) {
           input.setCustomValidity("Choose a champion from the list.");
         }
+        updateWinRateDisplay(input);
       }, 150);
     });
 
@@ -139,6 +171,12 @@
 
   document.querySelectorAll(".champion-autocomplete").forEach(initWidget);
 
+  if (showWinRates) {
+    document
+      .querySelectorAll("[data-show-win-rates] .champion-autocomplete__input")
+      .forEach((input) => updateWinRateDisplay(input));
+  }
+
   const randomizeBtn = document.getElementById("randomize-teams");
   if (randomizeBtn) {
     randomizeBtn.addEventListener("click", () => {
@@ -153,6 +191,7 @@
         if (!input || picked[index] == null) return;
         input.value = picked[index];
         input.setCustomValidity("");
+        updateWinRateDisplay(input);
       });
 
       form.querySelectorAll(".champion-autocomplete__list").forEach((list) => {
@@ -180,6 +219,7 @@
         } else {
           input.value = resolved;
           input.setCustomValidity("");
+          updateWinRateDisplay(input);
         }
       });
 

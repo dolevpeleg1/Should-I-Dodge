@@ -533,6 +533,64 @@ select:focus,
   position: relative;
 }
 
+.champion-autocomplete__control {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.champion-autocomplete__control .champion-autocomplete__input {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 0;
+}
+
+form:not([data-show-win-rates]) .champion-autocomplete__winrate-col {
+  display: none;
+}
+
+[data-show-win-rates] .champion-autocomplete__winrate-col {
+  flex: 0 0 4.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  padding-bottom: 0.55rem;
+}
+
+.champion-autocomplete__winrate-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+[data-show-win-rates] .champion-autocomplete__winrate {
+  min-height: 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--text-muted);
+}
+
+.team-column--ally .champion-autocomplete__winrate {
+  color: var(--ally);
+}
+
+.team-column--enemy .champion-autocomplete__winrate {
+  color: var(--enemy);
+}
+
+.team-column--ally .champion-autocomplete__winrate--empty,
+.team-column--enemy .champion-autocomplete__winrate--empty,
+.champion-autocomplete__winrate--empty {
+  color: var(--text-muted);
+}
+
 .champion-autocomplete__list {
   position: absolute;
   z-index: 50;
