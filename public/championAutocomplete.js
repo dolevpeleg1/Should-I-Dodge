@@ -6,14 +6,11 @@
 
   const names = JSON.parse(dataEl.textContent);
   const byLower = new Map(names.map((n) => [n.toLowerCase(), n]));
-  const MAX_SUGGESTIONS = 12;
 
   function filter(query) {
     const q = query.trim().toLowerCase();
-    if (!q) return names.slice(0, MAX_SUGGESTIONS);
-    return names
-      .filter((n) => n.toLowerCase().includes(q))
-      .slice(0, MAX_SUGGESTIONS);
+    if (!q) return names;
+    return names.filter((n) => n.toLowerCase().includes(q));
   }
 
   function resolve(value) {

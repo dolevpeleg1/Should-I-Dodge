@@ -531,7 +531,7 @@ select:focus,
   top: 100%;
   left: 0;
   right: 0;
-  max-height: 14rem;
+  max-height: min(16rem, 50vh);
   margin: 0.25rem 0 0;
   padding: 0.25rem 0;
   overflow-y: auto;
