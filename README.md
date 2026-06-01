@@ -1,43 +1,92 @@
 # Should I Dodge
 
-A fan-made League of Legends tool that compares team compositions using champion win rates, suggests whether to dodge, and links to YouTube champion guides. **No login required.**
+A fan-made **League of Legends** web app that compares team compositions using approximate champion win rates, suggests whether dodging might be worth it, and can surface a YouTube guide for a champion. **No Riot account or login required.**
 
-**Repository:** https://github.com/dolevpeleg1/Should-I-Dodge
+**Repository:** [github.com/dolevpeleg1/Should-I-Dodge](https://github.com/dolevpeleg1/Should-I-Dodge)
+
+---
+
+## What it does
+
+| Page | Route | Description |
+|------|--------|-------------|
+| Home | `GET /` | Overview and links to both tools |
+| Dodge calculator | `GET /dodgeCalculator` | Pick ally and enemy teams (5 champions each) |
+| Matchup result | `POST /results` | Average win rate per side and a dodge / favorable / even verdict |
+| Champion guides | `GET /championPage` | Search a champion and embed a YouTube guide (optional API key) |
+
+**Dodge logic (simplified):** For each side, the app sums win rates for the five champions (unknown names are skipped), divides by five for an average, then compares ally vs enemy. Higher ally average → favorable; higher enemy → dodge; tie → even. This is a rough heuristic for fun—not live matchmaking or MMR.
+
+---
 
 ## Features
 
-- Enter ally and enemy team comps → get a dodge recommendation
-- Browse champion win rates and fetch guide videos (YouTube Data API, optional)
+- **5v5 comp comparison** with autocomplete-style champion lists from bundled data
+- **Verdict** based on average win rates (not ML or live game data)
+- **Champion guides** via YouTube Data API v3 when `YOUTUBE_API_KEY` is set
+- **Data refresh scripts** to pull names from Riot Data Dragon and win rates from a public Hugging Face dataset (or manual CSV)
 
-## Local setup
+---
 
-1. Clone the repo and install dependencies:
+## Quick start
+
+**Requirements:** Node.js 18+ (recommended), npm
+
+1. **Clone and install**
 
    ```bash
+   git clone https://github.com/dolevpeleg1/Should-I-Dodge.git
+   cd Should-I-Dodge
    npm install
    ```
 
-2. Copy `.env.example` to `.env` and optionally set:
-
-   - `YOUTUBE_API_KEY` — for champion video guides (works without it for the dodge calculator)
-
-3. Refresh champion data after a patch:
+2. **Environment (optional)**
 
    ```bash
-   npm run sync-champions
+   cp .env.example .env
    ```
 
-   Restart the server (`Ctrl+C`, then `npm start`) so the site loads the updated file immediately.
+   | Variable | Required | Purpose |
+   |----------|----------|---------|
+   | `YOUTUBE_API_KEY` | No | Champion guide search; calculator works without it |
+   | `CHAMPION_CACHE_REFRESH_MS` | No | How often the server reloads `public/championWinrates.json` (default: 6 hours; `0` disables) |
 
-   Or edit `data/winrates.csv` by hand and run `npm run import-winrates` then `npm run update-champions`. New champions get 50% until you set a rate.
-
-4. Start the app:
+3. **Run the app**
 
    ```bash
    npm start
    ```
 
-   Open http://localhost:3000 — use the dodge calculator or champion guides with no account.
+   Open [http://localhost:3000](http://localhost:3000). For auto-reload during development: `npm run dev`.
+
+4. **Refresh champion data after a patch** (optional)
+
+   ```bash
+   npm run sync-champions
+   ```
+
+   Restart the server (`Ctrl+C`, then `npm start`) so changes load immediately. The server also reloads the JSON file on a timer if `CHAMPION_CACHE_REFRESH_MS` is set.
+
+---
+
+## Project layout
+
+```
+app.js              Express entry (port 3000)
+router.js           Routes and dodge / YouTube handlers
+lib/
+  championData.js   Loads and caches championWinrates.json
+  mergeChampionData.js  Merges Data Dragon names with win rates
+public/
+  championWinrates.json  Bundled champion + win rate data
+  style.css
+templates/          EJS views (calculator, results, guides)
+scripts/            Data pipeline (sync, import/export, Hugging Face)
+data/
+  winrates.csv      Editable win rates (import/export workflow)
+```
+
+---
 
 ## Where the data comes from
 
@@ -45,30 +94,49 @@ This project **does not scrape** op.gg, u.gg, LoLalytics, or similar sites. Upda
 
 | Data | Source | What the app does |
 |------|--------|-------------------|
-| Champion **names** | [Riot Data Dragon](https://developer.riotgames.com/docs/lol#data-dragon) | Fetches the official champion list each sync |
-| Champion **win rates** | [Hugging Face dataset](https://huggingface.co/datasets/HakimT/lol-champion-ranked-stats) | Downloads a public parquet snapshot once (`data/train.parquet`), reads it locally with DuckDB |
+| Champion **names** | [Riot Data Dragon](https://developer.riotgames.com/docs/lol#data-dragon) | Fetches the official champion list on sync |
+| Champion **win rates** | [Hugging Face: HakimT/lol-champion-ranked-stats](https://huggingface.co/datasets/HakimT/lol-champion-ranked-stats) | Downloads a public parquet snapshot (`data/train.parquet`), reads it locally with DuckDB |
 
-The Hugging Face file is a **community-published dataset** (historical ranked stats). Someone else collected aggregates from public stats sites; this app only **downloads and imports that file**—it does not crawl third-party websites on each run.
+The Hugging Face file is a **community-published dataset** (historical ranked stats). Someone else aggregated public stats; this app **downloads and imports that file**—it does not crawl third-party sites on each run.
 
-Win rates are **unofficial estimates** for entertainment, not live Riot meta. The dataset may lag behind the current patch. You can also maintain rates manually via `data/winrates.csv`.
+Win rates are **unofficial estimates** for entertainment, not live Riot meta. The dataset may lag the current patch. You can maintain rates manually via `data/winrates.csv`.
+
+---
 
 ## Champion data pipeline
 
-- **`npm run sync-champions`** — (1) Import win rates from the Hugging Face parquet, write `data/winrates.csv` and update `public/championWinrates.json`. (2) Sync champion names from Data Dragon and merge win rates. Requires `duckdb` (installed as a dev dependency).
-- **`npm run export-winrates`** / **`npm run import-winrates`** — Export JSON to CSV for manual edits, then import back (no Hugging Face download).
-- **`npm run fetch-winrates`** / **`npm run update-champions`** — Run either step alone if needed.
-- **Server cache** — Reloads `championWinrates.json` every 6 hours (`CHAMPION_CACHE_REFRESH_MS`). Restart the server after updates for immediate effect.
+| Command | What it does |
+|---------|----------------|
+| `npm run sync-champions` | Import win rates from Hugging Face parquet → update `data/winrates.csv` and `public/championWinrates.json`, then sync names from Data Dragon and merge |
+| `npm run fetch-winrates` | Hugging Face / parquet step only |
+| `npm run update-champions` | Data Dragon merge only |
+| `npm run export-winrates` | Write current JSON win rates to `data/winrates.csv` for manual edits |
+| `npm run import-winrates` | Import CSV back into JSON (no Hugging Face download) |
 
-To refresh win rates from a newer Hugging Face release, delete `data/train.parquet` and run `npm run sync-champions` again.
+- **DuckDB** is a dev dependency used when reading parquet during fetch/sync.
+- **New champions** without a rate get **50%** until you set one.
+- To pull a newer Hugging Face release: delete `data/train.parquet` and run `npm run sync-champions` again.
+
+---
 
 ## Tech stack
 
-- Node.js, Express, EJS
-- Champion names: Riot Data Dragon
-- Win rates: imported from a public Hugging Face dataset (or manual CSV)
+- **Runtime:** Node.js, Express 5, EJS
+- **Client:** Server-rendered HTML + CSS in `public/`
+- **Data:** Riot Data Dragon, Hugging Face dataset (or manual CSV), optional YouTube Data API v3
+
+---
+
+## AI use
+
+**In the product:** Dodge recommendations are **not** generated by an LLM. They are deterministic: average win rates from `public/championWinrates.json` and simple comparison in `router.js`. Champion guides use the **YouTube Data API** (keyword search), not generative AI.
+
+**In development:** I Built the project end-to-end, using Cursor as an AI assistant to support development of the dodge calculator, route handling, verdict logic, data refresh workflow, UI styling, testing, and final review.
+
+---
 
 ## Disclaimer
 
-This is a fan project and is **not** associated with or endorsed by Riot Games. Dodge suggestions and win rates are **approximate and for fun**—not competitive or betting advice. Use official sources for serious decisions.
+This is a **fan project** and is **not** associated with or endorsed by Riot Games. Dodge suggestions and win rates are **approximate and for fun**—not competitive, betting, or esports advice. Use official sources for serious decisions.
 
-Should I Dodge is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+*Should I Dodge is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.*
